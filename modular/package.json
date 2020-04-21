@@ -1,0 +1,17 @@
+{
+  "name": "modular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"babel-node --presets env index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

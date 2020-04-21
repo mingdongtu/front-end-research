@@ -1,0 +1,5 @@
+
+
+exports.a={
+       name:'benjieming'
+}
