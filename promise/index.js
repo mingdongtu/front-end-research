@@ -45,4 +45,9 @@ function Promise (fn) {
     // 返回新 promise 对象，维持链式调用
     return res;
   };
+  function Handler (onResolved, onRejected, promise) {
+    this.onResolved = typeof onResolved === 'function' ? onResolved : null;
+    this.onRejected = typeof onRejected === 'function' ? onRejected : null;
+    this.promise = promise;
+  }
   
