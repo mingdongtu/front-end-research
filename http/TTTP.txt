@@ -1,0 +1,20 @@
+*expires*
+做法：
+1、后端在 response 头部添加 expires ，请求过期时间
+缺点：
+1、过期时间过去了，但其实缓存的文件内容并没有改变，这个时候还是要重新请求；
+2、浏览器和服务器时间 不同步，导致这个过期时间无法生效；
+
+*Cache-Control*：强制缓存策略
+做法：
+1、后端在 response 头部添加  res.setHeader('Cache-Control', 'public,max-age=120')
+优点：
+1、相比expires 的绝对时间，这是一个相对时间，解决了时间不同步的问题
+缺点：
+1、过期时间过去了，但是服务器上对应缓存内容并没有变动，服务器还是会再次获取文件返回给客户端；
+
+*协商缓存*
+做法：协商缓存有两组报文结合使用
+1、Last-Modified和If-Modified-Since。
+Last-Modified：服务器每次返回文件时，告诉浏览器最近在服务器上的修改时间。
+If-Modified-Since：当浏览器上的缓存文件过期时，浏览器带上请求头If-Modified-Since（等于上一次的Last-Modified）请求服务器，服务器比较这浏览器上发过来的时间和Last-Modified，如果一致，那么返回304 状态码，浏览器继续使用本地
