@@ -17,4 +17,11 @@
 做法：协商缓存有两组报文结合使用
 1、Last-Modified和If-Modified-Since。
 Last-Modified：服务器每次返回文件时，告诉浏览器最近在服务器上的修改时间。
-If-Modified-Since：当浏览器上的缓存文件过期时，浏览器带上请求头If-Modified-Since（等于上一次的Last-Modified）请求服务器，服务器比较这浏览器上发过来的时间和Last-Modified，如果一致，那么返回304 状态码，浏览器继续使用本地
+If-Modified-Since：当浏览器上的缓存文件过期时，浏览器带上请求头If-Modified-Since（等于上一次的Last-Modified）请求服务器，服务器比较这浏览器上发过来的时间和Last-Modified，如果一致，那么返回304 状态码，浏览器继续使用本地，否则就返回文件内容和last-Modified
+
+优点：
+1、解决了时间不一致的问题
+缺点：
+1、但是时间终究是有最小单位的，如果在1s 内服务器文件内容发生了 变动 ，那么这个将很难发挥作用
+
+*Etag*
