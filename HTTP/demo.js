@@ -1,1 +1,1 @@
-console.log('i am here')
+console.log('我是demo.js')
