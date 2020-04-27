@@ -10,41 +10,32 @@ const arr = [
 ]
 
 var findNumberIn2DArray = function(matrix, target) {
-    let isHas = false;
-    let len = matrix.length;
+    let isHas = false //二维数组中是否存在target值
+    let isBreak = false
     for (let i = 0; i < matrix.length; i++) {
-        function fn(currentArray, target) {
-            //   let currentArray = matrix[i] //
-            // console.log(currentArray)
-            if (target < currentArray[currentArray.length - 1]) {
 
-                let middleIndex = Math.floor(currentArray.length / 2);
+        function fn(arr) { //
+            if (arr.length === 1) {
+                isHas = isBreak = arr[0] === target ? true : false;
+                return
+            };
+            const middleIndex = Math.floor(arr.length / 2)
+            const middle = arr[middleIndex];
 
-                let middle = currentArray[middleIndex];
-                console.log(currentArray, currentArray.length, middleIndex, Math.floor(currentArray.length / 2))
-                if (middleIndex == 0) return; //跳出循环
-
-                if (target > middle) {
-                    currentArray = currentArray.slice(middleIndex + 1)
-
-                    fn(currentArray, target)
-                }
-                if (target < middle) {
-                    currentArray = currentArray.slice(0, middleIndex)
-                    console.log(currentArray, middleIndex)
-                    fn(currentArray, target)
-                }
-                if (target == middle) {
-                    isHas = true
-                    return
-                }
+            if (target != middle) {
+                const array = target < middle ? arr.slice(0, middleIndex) : arr.slice(middleIndex + 1)
+                if (array.length === 0) return
+                fn(array)
+            } else {
+                isHas = isBreak = true
             }
-
         }
-        fn(matrix[i], target)
-    }
+        if (isBreak) break
+        fn(matrix[i])
 
+    }
     return isHas
+
 };
 const a = findNumberIn2DArray(arr, 16)
 console.log(a)
