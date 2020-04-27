@@ -11,6 +11,33 @@ const arr = [
     [18, 21, 23, 26, 30]
   ]
   
-function a(arr,b){
-      
-}
+  var findNumberIn2DArray = function(matrix, target) {
+    let isHas = false //二维数组中是否存在target值
+    let isBreak = false
+   for(let i = 0;i<matrix.length;i++){
+       
+        function fn(arr){ //
+            if(arr.length===1) {
+                isHas = isBreak = arr[0] === target?true:false;
+                return
+           } ;
+            const middleIndex = Math.floor(arr.length/2) 
+            const middle = arr[middleIndex];
+                 
+            if(target!=middle){
+             const array =target<middle? arr.slice(0,middleIndex):arr.slice(middleIndex+1)
+             if(array.length===0) return
+             fn(array)
+             }else{
+                isHas = isBreak = true
+             }
+           }
+    if(isBreak)  break
+    fn(matrix[i])
+     
+   }
+   return isHas
+  
+};
+const a = findNumberIn2DArray(arr,16)
+console.log(a)
