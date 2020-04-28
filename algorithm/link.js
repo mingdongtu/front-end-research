@@ -26,21 +26,23 @@ function ListNode(val) {
   }
 var addTwoNumbers = function(l1, l2) {
     let sum = 0,
-        head = {},
+        head = {}, // 构建一个空链表
         cur = head;
     while(l1 || l2 || sum) {
-        console.log('来了',l1,l2)
         sum += (l1 && l1.val) + (l2 && l2.val);
-        cur = cur.next = new ListNode(sum % 10);
+        // cur = new ListNode(sum % 10)
+        cur.next = new ListNode(sum % 10); // head 内存地址增加了一个next 属性
+        cur = cur.next //把cur 的内存地址指向了 head.next 
         l1 = l1 && l1.next;
-        l2 = l2 && l2.next;
-        sum = Math.floor(sum / 10);
+        l2 = l2 && l2.next; 
+        sum = Math.floor(sum / 10); //若 sum>10 后面进一位
+
     }
   
     return head.next;
 };
 //[2,4,3],[5,6,7]  建立两个链表
-const link1 = new LLsit(2) //初始化链表
+const link1 = new LLsit(2) //初始化创建链表
 link1.insertNode(4,2)
 link1.insertNode(3,4)
 const link2 = new LLsit(5)
@@ -48,5 +50,5 @@ link2.insertNode(6,5)
 link2.insertNode(7,6)
 
 
-const a = addTwoNumbers(link1,link2)
-console.log('看一下我创建的链表',a)
+const a = addTwoNumbers(link1.head,link2.head)
+console.log(a)
