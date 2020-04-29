@@ -58,6 +58,7 @@ const middleOrder = function(node){
                middleOrder(node.right)
        }
 }
+middleOrder(tree)
 console.log(middleList)
 
 //后序遍历：左边-右边-中间-根节点
@@ -70,3 +71,4 @@ const backOrder = function(node){
               backList.push(node.value)
        }
 }
+backOrder(tree)
