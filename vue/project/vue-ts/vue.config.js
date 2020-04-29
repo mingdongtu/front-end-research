@@ -1,0 +1,30 @@
+module.exports = {
+    publicPath:'./',
+    outputDir:'build',
+    assetsDir:'asset',
+    indexPath:'app.html',
+    configureWebpack:{},
+    css:{
+          loaderOptions:{
+                less:{  
+                   rules:[
+                         {
+                             test:/\.less$/,
+                             loader:'less-loader'
+                         }
+                   ]    
+                },
+                postcss:{ 
+                   
+                },
+                css:{
+                      rules:[
+                             {
+                                 test:/\.css$/i,
+                                 use:['style-loader','css-loader']
+                             }
+                      ]
+                }
+          }
+    }
+}
