@@ -21,6 +21,7 @@ const ProductList = ({onDelete,products})=>{
                 }
             }
        ];
+       console.log('初始化数据',products)
        return (
               <Table 
                 dataSource={products}
@@ -29,7 +30,7 @@ const ProductList = ({onDelete,products})=>{
        )
 }
 
-ProductList.prototype = {
+ProductList.propTypes  = {
        onDelete:PropTypes.func.isRequired,
        products:PropTypes.array.isRequired
 }
