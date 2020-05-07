@@ -3,10 +3,20 @@
 
 export  default {
        namespace:'products',
-       state:[],
+       state:{
+       },
        reducers:{
              delete(state,{payload:id}){
+                     console.log('来看下',state)
                     return state.filter(item=>item.id !== id)
+              
+             },
+             add(state,{payload:products}){
+              //       return state.push(...arr)
+                 return {
+                      ...state,
+                     //  ...products
+                 }
              }
        }
 }
