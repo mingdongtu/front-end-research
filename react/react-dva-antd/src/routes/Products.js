@@ -3,6 +3,8 @@ import { connect } from 'dva';
 import { Bind } from 'lodash-decorators';// binds the Function to the current instance object.
 import ProductList from '../components/ProductList';
 //connect 方法传入的第一个参数是 mapStateToProps 函数，mapStateToProps 函数会返回一个对象，用于建立 State 到 Props 的映射关系。
+// @:装饰器（Decorator）是一种与类（class）相关的语法，用来注释或修改类和类方法
+ // any time the store is updated, mapStateToProps(connect的参数) will be called
 @connect(({products,dispatch})=>{
         return {products:products.producList,dispatch}
 })
