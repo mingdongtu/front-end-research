@@ -7,7 +7,9 @@ import ProductList from '../components/ProductList';
         return {products:products.producList,dispatch}
 })
 export default class Products extends Component {
-     
+     state={
+        a:100 
+     }
      @Bind()
       handleDelete(id) {
            console.log('322323',id)
@@ -33,7 +35,7 @@ export default class Products extends Component {
      const {  products } = this.props
      return (
      <div >
-     <h2>List of Products</h2> 
+     <h2>List of Products{this.state.a}</h2> 
      <ProductList onDelete={this.handleDelete} onAdd = {this.handleAdd} products={products} />
      </div>
      )
