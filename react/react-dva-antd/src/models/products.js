@@ -3,23 +3,23 @@
 
 export  default {
        namespace:'products',
-       state:null,
+       state:{},
+       effects:{
+          
+       },
        reducers:{
              delete(state,{payload:id}){
-                   
-              //       const {products} = state
                     console.log('数据存储中心',state)
-                  state.products =  state.products.filter(item=>item.id !== id)
+                  state.producList =  state.producList.filter(item=>item.id !== id)
                   console.log('数据存储中心11',state)
                   return  {...state}
               
              },
              add(state,{payload:{products}}){
-                    console.log(1111,products,state)
-                 const list = [...state.products,...products] 
+                 const list = [...state.producList,...products] 
                  return {
                       ...state,
-                      ...{products:list}
+                      ...{producList:list}
                  }
 
              }

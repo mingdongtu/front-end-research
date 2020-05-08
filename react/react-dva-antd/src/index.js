@@ -5,10 +5,11 @@ import './index.css';
 const app = dva({
        initialState:{
              products:{ //这个products 代表的是model的命名空间
-                products:[
+                producList:[
                     {name:'dva',id:1,key:Math.random()},
                     {name:'antd',id:2,key:Math.random()}
-                        ]
+                        ],
+                    a:1
              },
            
        }
