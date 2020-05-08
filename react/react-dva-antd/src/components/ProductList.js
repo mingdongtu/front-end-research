@@ -2,9 +2,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types'
-import {Table,Popconfirm,Button, Divider} from 'antd'
+import {Table,Popconfirm,Button} from 'antd'
 
 const ProductList = ({onDelete,onAdd,products})=>{
+       console.log('渲染组件的数据',products)
        const columns = [
             {
                 title:'Name',
@@ -30,7 +31,6 @@ const ProductList = ({onDelete,onAdd,products})=>{
                 key:'Actions'
             }
        ];
-       console.log('初始化数据',products)
        return (
               <Table 
                 dataSource={products}
@@ -42,8 +42,7 @@ const ProductList = ({onDelete,onAdd,products})=>{
 
 ProductList.propTypes  = {
        onDelete:PropTypes.func.isRequired,
-       onDelete:PropTypes.func.isRequired,
-       products:PropTypes.array.isRequired
+       onAdd:PropTypes.func.isRequired
 }
 
 export default ProductList

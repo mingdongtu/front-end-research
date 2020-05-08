@@ -18,6 +18,7 @@ const Products = ({ dispatch, products }) => {
               payload:{products:data}
         })
   }
+
   return (
     <div>
       <h2>List of Products</h2>
@@ -26,8 +27,7 @@ const Products = ({ dispatch, products }) => {
   );
 };
 
-// export default Products;
-export default connect((state) => {
-     console.log(state)
-       return {products:state.products}
+export default connect(({products:{products}}) => {
+    console.log('lai',products)
+       return {products:products}
 })(Products);
