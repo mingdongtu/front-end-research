@@ -1,20 +1,33 @@
 <template>
-  <div class="hello" >
-恶趣味请问全额万绮雯
+  <div class="hello">
+    <span @click="onChange">点击</span>
+    <span>{{a}}</span>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-// import xstyles from './layout.css'
+import { Component, Prop, Vue, Provide, Emit } from 'vue-property-decorator'
+// import './layout.css'
+// const style = require('./layout.css')
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+  @Prop() private msg!: string
+  @Provide() a = '来试一下'
+  // @Emit()
+  // onChange() {
+  //   this.a = '我来了'
+  // }
+
+  // @Emit()
+  // onChange = () => {
+  //   this.a = '23333'
+  // }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less" module>
+@import './layout.css';
 h3 {
   margin: 40px 0 0;
 }
