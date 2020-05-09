@@ -31,8 +31,9 @@
             console.log('updated')
          },
          methods:{
-            show(){
-               console.log('事件')
+            show:()=>{
+               console.log('事件',this)
+               
             }
          }
    }

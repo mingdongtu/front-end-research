@@ -1,4 +1,9 @@
 //深入研究二叉树
+//一句话: 每个节点最多有左右两个子节点，且小的节点放在左边，大的节点放在右边=>所以一个节点起码有value属性，和至少left 和 right 其中一个属性；
+//优点: 拥有比列表更快的查询速度
+
+
+
 
 //创建一个(a+b*c)-d/e 的二叉树表达
 
@@ -6,30 +11,61 @@ function Node(val){
        
 }
 var tree = {
-       value:'-',
+       value:100,
        left:{
-            value:'+',
+            value:80,
             left:{
-                  value:'a',
-                  left:{value:'x'},
-                  right:{value:'y'}
+                  value:70,
+                  left:{value:60},
+                  right:{value:65}
             },
             right:{
-                value:'*',
+                value:85,
                 left:{
-                    value:'b'
+                    value:80
                    },
                 right:{
-                    value:'c'
+                    value:87
                 }
             }
        },
        right:{
-             value:'/',
-             left:{value:'d'},
-             right:{value:'e'}
+             value:110,
+             left:{value:105},
+             right:{value:115}
        }
 }
+  //二叉树查询值,返回所在节点
+function findNode(val){
+        let curNode =  tree ;
+        while(true){
+              if(curNode.value===val){
+                      //返回节点
+                      return curNode
+              }
+              curNode = val<curNode.value?curNode.left:curNode.right;
+              // console.log('我想要的节点',curNode)
+              //如果curNode 最后指向不存在，那么就返回null
+              if(curNode==null){
+                      return null
+              }
+        }
+}
+
+const aNode = findNode(80)
+// console.log(aNode)
+
+//删除二叉树节点:返回删除后二叉树结构
+function deleteNode(val,tree){
+       //首先找到节点
+       let curNode = tree;
+     
+       if(curNode.value === val){
+          curNode.left
+       }
+
+}
+// deleteNode(80,tree)
 
 //二叉树的前序遍历
 //关于递归函数执行顺序的问题:两个递归函数是同级的，会优先执行第一个，第二个会被放到函数调用栈中
@@ -59,7 +95,6 @@ const middleOrder = function(node){
        }
 }
 middleOrder(tree)
-console.log(middleList)
 
 //后序遍历：左边-右边-中间-根节点
 
