@@ -1,11 +1,15 @@
 //负责处理数据和逻辑
-
+//service 是 如何和model 建立联系的？
+//
 
 export  default {
        namespace:'products',
        state:{},
-       effects:{
-          
+       effects:{  //  处理异步动作
+             *changeName({payload},{call,put}){  //改变指定行的名字
+                    
+                     
+             }
        },
        reducers:{
              delete(state,{payload:id}){
