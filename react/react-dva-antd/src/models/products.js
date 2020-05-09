@@ -13,9 +13,7 @@ export  default {
        },
        reducers:{
              delete(state,{payload:id}){
-                    console.log('数据存储中心',state)
                   state.producList =  state.producList.filter(item=>item.id !== id)
-                  console.log('数据存储中心11',state)
                   return  {...state}
               
              },
