@@ -3,13 +3,13 @@ import './index.css';
 // 1. Initialize
 const app = dva({
        initialState:{
-             products:{ //这个products 代表的是model的命名空间
-                producList:[
-                    {name:'dva',id:1,key:Math.random()},
-                    {name:'antd',id:2,key:Math.random()}
-                        ],
-                    a:1
-             },
+            //  products:{ //这个products 代表的是model的命名空间
+            //     producList:[
+            //         {name:'dva',id:1,key:Math.random()},
+            //         {name:'antd',id:2,key:Math.random()}
+            //             ],
+            //         a:1
+            //  },
            
        }
 });
