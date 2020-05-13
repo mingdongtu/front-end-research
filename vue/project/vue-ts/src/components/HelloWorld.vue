@@ -1,27 +1,28 @@
 <template>
   <div class="hello">
-    <span @click="onChange">点击</span>
+    <p @click="onChange">点击</p>
     <span>{{a}}</span>
+    <Home/>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Provide, Emit } from 'vue-property-decorator'
+import Home from './Home.vue'
+import { Component, Vue } from 'vue-property-decorator'
 // import './layout.css'
 // const style = require('./layout.css')
-@Component
+@Component({
+  components: {
+    Home
+  }
+})
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string
-  @Provide() a = '来试一下'
-  // @Emit()
-  // onChange() {
-  //   this.a = '我来了'
-  // }
-
-  // @Emit()
-  // onChange = () => {
-  //   this.a = '23333'
-  // }
+  // msg :String = 'HelloWorld' // 这种写法会报错，tslint觉得自己根据右边的"www.baidu.com"判断出requestUrl的类型是string，所以，认为再写string是多此一举
+  msg ='HelloWorld'
+  a = '来试一下'
+  onChange (): void {
+    this.a = '1000'
+  }
 }
 </script>
 
