@@ -52,19 +52,19 @@ test2()
 
  function test3(){
         console.log(b)
-        var b = 100;
+        var b = 100;  //var b;被忽视; b= 100被执行，a变成number
         function b(){
-             console.log('222')
+            //  console.log('222')
+            return '1222'
         }
         console.log(b)
  }
- console.log('下面是eg3：')
+ console.log('下面是eg4：')
 test3()
 
 /**
  解释：
  1、var 不仅声明了b 这个变量，还给她设置了一个值100；
- 2、function b(){}只是给b 声明为函数，但是并没有赋值，最终b 还是被var 给赋值为100
- 3、因为声明可以提升，但是声明的值却不能提升，所以第一个打印是function类型；
- 4、第二个打印时，b 不仅被声明了，还被赋值了
+ 2、function b(){} 优先级比较高+声明可以提升，所以第一个打印是 Function
+ 3、第二个打印时，b 不仅被声明了，还被赋值了
  */

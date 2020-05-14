@@ -14,11 +14,11 @@ var a = 1;
 b = 2
 console.log(b) //2
 function test(){
-       c = 100
+      var  c = 100
        return c
 }
 console.log('执行函数返回没有使用关键字声明的c',test()) //100
-console.log('函数外层去获取c',c) //100
+console.log('函数外层去获取c',c) //ReferenceError: c is not defined
 
 /**
  1、赋值给没有使用var 、let、const 关键字声明的变量时，这个变量会自动被创建成全局变量
