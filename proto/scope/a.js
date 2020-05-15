@@ -18,7 +18,7 @@ function test(){
        return c
 }
 console.log('执行函数返回没有使用关键字声明的c',test()) //100
-console.log('函数外层去获取c',c) //ReferenceError: c is not defined
+// console.log('函数外层去获取c',c) //ReferenceError: c is not defined
 
 /**
  1、赋值给没有使用var 、let、const 关键字声明的变量时，这个变量会自动被创建成全局变量
@@ -26,7 +26,7 @@ console.log('函数外层去获取c',c) //ReferenceError: c is not defined
  */
 //eg3:
  function test1(){
-      "use strict"
+//       "use strict"
         d = 99   
         return d 
  }
@@ -38,4 +38,17 @@ console.log('函数外层去获取c',c) //ReferenceError: c is not defined
   格模式修复了一些导致 JavaScript引擎难以执行优化的缺陷：有时候，相同的代码，严格模式可以比非严格模式下运行得更快。
   */
 
+ /**
+  eg4:变量提升
+  */
+
+ function foo(a) {
+       //   inner scope 'foo'
+       // defined argument a, and look-up b upwards
+       console.log( a + foob );
+   }
+   console.log('eg4:')
+   foo(10) //NAN 此时b还没有被赋值，只是声明了
+   var foob = 2;
  
+   foo( 98 ); // 4
