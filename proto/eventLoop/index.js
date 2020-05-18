@@ -24,7 +24,7 @@ console.log(1); //同步
 
 setTimeout(() => {
     console.log(2); // 宏任务
-    Promise.resolve().then(() => {
+    Promise.resolve().then(() => {  //注意：Promise 是同步的 then 是异步的
         console.log(3) //微任务
     });
 });
