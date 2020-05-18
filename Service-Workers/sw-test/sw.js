@@ -6,12 +6,14 @@
  */
 /**
  * 注意： localStorage 跟  service worker 的 cache 工作原理很类似，但是它是同步的，所以不允许在  service workers 内使用
+ * 注意: IndexedDB 可以在  service worker 内做数据存储。
  */
 
 self.addEventListener('install', function(event) {    //addEventListener() 方法将指定的监听器注册到 EventTarget 上，当该对象触发指定的事件时，指定的回调函数就会被执行
   event.waitUntil(
-    caches.open('v1').then(function(cache) {
-      return cache.addAll([
+    // caches.open创建一个叫做v1的新缓存，并且返回一个Promise
+    caches.open('v1').then(function(cache) {  
+      return cache.addAll([  // addAll()，这个方法的参数是一个由一组相对于 origin 的 URL 组成的数组，这些 URL 就是你想缓存的资源的列表。
         '/sw-test/',
         '/sw-test/index.html',
         '/sw-test/style.css',
@@ -25,12 +27,13 @@ self.addEventListener('install', function(event) {    //addEventListener() 方�
     })
   );
 });
+//当安装（install）成功完成之后， service worker 就会激活
 
 /**
  *  respondWith这是一个实验中的功能
  */
 self.addEventListener('fetch', function(event) {
-  event.respondWith(caches.match(event.request).then(function(response) {
+  event.respondWith(caches.match(event.request).then(function(response) {  //respondWith() 方法来劫持我们的 HTTP 响应
     // caches.match() always resolves
     // but in case of success response will have value
     if (response !== undefined) {
