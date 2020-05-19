@@ -1,5 +1,5 @@
 // register service worker
-
+//在你的 service worker register之后，浏览器会尝试为你的页面或站点安装并激活它。 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw-test/sw.js', { scope: '/sw-test/' }).then(function(reg) {   //scope选填的，可以被用来指定你想让 service worker 控制的内容的子目录
 
@@ -23,11 +23,11 @@ if ('serviceWorker' in navigator) {
 function imgLoad(imgJSON) {
   // return a promise for an image loading
   return new Promise(function(resolve, reject) {
-    var request = new XMLHttpRequest();
+    var request = new XMLHttpRequest();  //XMLHttpRequest此接口继承了 XMLHttpRequestEventTarget 和 EventTarget 的属性。
     request.open('GET', imgJSON.url);
-    request.responseType = 'blob';
-
-    request.onload = function() {
+    request.responseType = 'blob';  //response 是一个包含二进制数据的 Blob 对象 
+//XMLHttpRequestEventTarget 是一个描述事件处理程序的接口  
+    request.onload = function() {   //XMLHttpRequestEventTarget.onload  是 XMLHttpRequest 请求成功完成时调用的函数
       if (request.status == 200) {
         var arrayResponse = [];
         arrayResponse[0] = request.response;

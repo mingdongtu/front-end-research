@@ -8,7 +8,7 @@
  * 注意： localStorage 跟  service worker 的 cache 工作原理很类似，但是它是同步的，所以不允许在  service workers 内使用
  * 注意: IndexedDB 可以在  service worker 内做数据存储。
  */
-
+//install 事件会在安装完成之后触发
 self.addEventListener('install', function(event) {    //addEventListener() 方法将指定的监听器注册到 EventTarget 上，当该对象触发指定的事件时，指定的回调函数就会被执行
   event.waitUntil(
     // caches.open创建一个叫做v1的新缓存，并且返回一个Promise
