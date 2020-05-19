@@ -1,17 +1,19 @@
 (function() {
 
-    console.log('这是开始');
-  
+    console.log('1');
+
     setTimeout(function cb() {
-      console.log('这是来自第一个回调的消息');
-    });
-  
-    console.log('这是一条消息');
-  
-    setTimeout(function cb1() {
-      console.log('这是来自第二个回调的消息');
+        console.log('2');
     }, 0);
-  
-    console.log('这是结束');
-  
-  })();
+
+    console.log('3');
+
+    setTimeout(function cb1() {
+        console.log('4');
+    }, 0);
+
+    console.log('5');
+
+})();
+//同步：1->3->5
+//宏任务:4->2
