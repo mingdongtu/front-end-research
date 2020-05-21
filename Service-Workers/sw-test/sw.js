@@ -1,4 +1,7 @@
 /**
+ * 这个文件是 我们站点的service worker
+ */
+/**
  * 方法解释：
  * ExtendableEvent.waitUntil() 方法扩展了事件的生命周期。在服务工作线程中，延长事件的寿命从而阻止浏览器在事件中的异步操作完成之前终止服务工作线程
  * 在一个与 install 事件相关联的 EventHandler 被调用时，它延迟将被安装的worker视为 installing ，直到传递的 Promise 被成功地resolve。

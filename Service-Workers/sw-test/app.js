@@ -1,3 +1,4 @@
+//service worker 的入口
 // register service worker
 //在你的 service worker register之后，浏览器会尝试为你的页面或站点安装并激活它。 
 if ('serviceWorker' in navigator) {
