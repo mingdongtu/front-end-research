@@ -52,7 +52,7 @@ self.addEventListener('fetch', function(event) {
                     cache.put(event.request, responseClone);
                 });
                 return response;
-            }).catch(function() { //缓存和请求中都没有资源
+            }).catch(function() { //没有网络并且网络中没有资源
                 return caches.match('/sw-test/gallery/myLittleVader.jpg');
             });
         }
