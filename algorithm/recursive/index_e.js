@@ -6,16 +6,18 @@ const arr = [1, 3, 5]
 
 function backtrack(list, tempList, nums) {
     if (tempList.length === nums.length) {
-        // console.log('退出条件', tempList, list)
+        console.log('退出条件', tempList, list)
         return list.push([...tempList])
     };
     for (let i = 0; i < nums.length; i++) {
-        if (tempList.includes(nums[i])) continue;
+        // console.log('我循环',i)
+        if (tempList.includes(nums[i])) {
+            continue};
         tempList.push(nums[i]);
-        console.log('调用循环', tempList, i)
+        // console.log('调用循环', tempList, nums[i])
         backtrack(list, tempList, nums); //在循环♻️里面调用递归函数
         const a = tempList.pop();
-        console.log('删掉的元素!!!!!!!!!!!!!!!!', a)
+        console.log('删掉的元素!!!!!!!!!!!!!!!!', tempList,a)
     }
 }
 
