@@ -9,12 +9,13 @@ export  default {
        },
        effects:{  //  处理异步动作
              *changeName({payload},{call,put}){  //改变指定行的名字
-                    
+                       
                      
              },
              *getTable({payload},{call,put}){  //调用service 里面的请求方法
                   const result = yield call(getTableList,payload) 
                   console.log('model里面的数据',result,payload)
+                  return result
              }
        },
        reducers:{
@@ -31,8 +32,11 @@ export  default {
                  }
 
              },
-             updata(state,payload){ //更新state
-                   
+             update(state,{payload}){ //更新state
+                   return {
+                     ...state,
+                     ...payload
+                   }
              }
        }
 }

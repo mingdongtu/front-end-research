@@ -17,16 +17,25 @@ export default class Products extends Component {
            //获取表单初始数据
       //测试mock数据
     const {dispatch} = this.props;
-    dispatch({
-         type:'products/getTable',
-         payload:{}
+    // dispatch({
+    //      type:'products/getTable',
+    //      payload:{}
+    // }).then(response=>{
+    //   dispatch({
+    //             type:'products/update',
+    //             payload:response
+    //         })
+    // })
+      fetch('/getTable/list',{method: 'POST'}).then(res=>{
+         console.log('没有经过处理的数据',res.status,res)
+         return res.json()
+    }).then(response=>{
+        dispatch({
+            type:'products/update',
+            payload:response
+        })
+        console.log('最终数据',response)
     })
-   //    fetch('/getTable/list',{method: 'POST'}).then(res=>{
-   //       console.log('没有经过处理的数据',res.status)
-   //       return res.json()
-   //  }).then(response=>{
-   //      console.log('最终数据',response)
-   //  })
 
      }
      @Bind()
