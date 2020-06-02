@@ -1,8 +1,7 @@
 const Koa = require('koa');
 const app = new Koa();
-
 const main = ctx => {
-    if (ctx.request.accepts('xml')) {
+    if (ctx.request.accepts('xml')) {  
         ctx.response.type = 'xml';
         ctx.response.body = '<data>hello world</data>'
     } else if (ctx.request.accepts('json')) {
