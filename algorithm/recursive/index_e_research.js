@@ -1,10 +1,10 @@
 
 
 function revise(n){
-    if(n>4) {
+    if(n==4) {
         // console.log('我执行了退出',n)
         return}
-    for(let i=0 ;i<1;i++){ //调用自身函数时，剩下没有完成的循环压入栈中
+    for(let i=0 ;i<3;i++){ //调用自身函数时，剩下没有完成的循环压入栈中
         n ++ 
         console.log(i,'>>>>>>>>>>>>>>>>',n)
         revise(n); 
@@ -13,3 +13,14 @@ function revise(n){
     }
 }
 revise(3)
+
+
+
+
+
+
+
+
+
+
+
