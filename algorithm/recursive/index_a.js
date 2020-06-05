@@ -10,5 +10,5 @@ function sum(start,cur,n){ //
      start = start + 1 ;
     return sum(start,cur,n)
 }
-const a = sum(1,0,100)
+const a = sum(1,0,5)
 console.log(a)

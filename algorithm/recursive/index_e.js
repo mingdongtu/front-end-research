@@ -29,7 +29,11 @@ function backtrack(list, tempList, nums) {
  7、执行栈中的任务z2：i=1,tempList = [1,3] ,将tempList最后一个元素删除，temList= [1]，执行i=2的循环，栈中有：z1
  8、延续上一个任务的从i=2重启循环，tempList 无nums[2],放入tempList中去[1,5],执行递归函数，将i=2 没有执行完的压入栈中z4，剩下：z4、z1
  9、i=0，重启循环，将i=1（3），放入tempList中去，tempList = [1,5,3],将i=1，压入栈中z5，剩下：z5 z4,z1
- 10、开始执行栈中任务
+ 10、开始执行栈中任务z5：tempList 最后一个元素删除，tempList= [1,5], i=2 循环，tempList 中有num[2],循环完毕；剩下：z4、z1
+ 11、开始执行z4： i=2，执行删除，tempList = [1] 剩下：z1
+ 12、开始执行z1:i = 0; 执行删除，tempList = [],i=1,开启循环，tempList = [3],执行递归，i =1 未执行完的for循环压入栈中：剩下：z6
+ 13、递归：i=0;tempList = [3,1],i=0,未执行完毕压入栈中 剩下：z7、z6
+ 至此找出了[[1,3,5],[1,5,3]]
  */
 /**
  * @param {number[]} nums
