@@ -23,6 +23,10 @@ ant-design-vue 第三方组件库
 为了不将整个项目引入到框架里，需要用到
 babel-plugin-import
 
+yarn add mysql@^2.16.0    //安装mysql驱动
+yarn global add sequelize-auto@^0.4.29 //自动生成schema
+yarn add sequelize@^3.28.0
+koa-jwt
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

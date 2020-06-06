@@ -3,7 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// 把UI组件一次性导入
+import Axios from 'axios'
+//axios 既可以用于浏览器，也可以用于nodejs的http客户端
+Vue.prototype.$http = Axios
+    // 把UI组件一次性导入
 import {
     Button,
     Row,
