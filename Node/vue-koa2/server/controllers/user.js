@@ -2,8 +2,9 @@
 
 import user from '../models/user.js'
 const jwt = require('jsonwebtoken')
-    //Note that koa-jwt no longer exports the sign, verify and decode
-    // functions from jsonwebtoken in the koa-v2 branch.
+import bcrypt from 'bcryptjs'
+//Note that koa-jwt no longer exports the sign, verify and decode
+// functions from jsonwebtoken in the koa-v2 branch.
 const getUserInfo = async function(ctx, next) { //node.js中间件
         const id = ctx.params.id;
         const result = await user.getUserById(id);
@@ -16,7 +17,12 @@ const getUserAuth = async function(ctx, next) {
     const userInfo = user.getUserByName(data.name);
     if (userInfo != null) {
         //如果查无此用户，返回null
-        if (userInfo.password !== data.password) {
+        /**
+         然后我们需要把我们数据库里123这个明文密码 bcrypt 化，
+         加密后变为：$2a$10$x3f0Y2SNAmyAfqhKVAV.7uE7RHs3FDGuSYw.LlZhOFoyK7cjfZ.Q6，替换数据库里的123
+         */
+        // if (userInfo.password !== data.password) {
+        if (!bcrypt.compareSync(data.password, userInfo.password)) { //验证密码是否正确
             ctx.response.body = {
                 success: false,
                 info: '密码错误'

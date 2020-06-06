@@ -16,7 +16,9 @@ const SearchForm = {
   data() {
     return {}
   },
-
+  beforeCreate() {
+      this.form = this.$form.createForm(this);
+    },
   methods: {
     handleSubmit(e) {
       e.preventDefault()

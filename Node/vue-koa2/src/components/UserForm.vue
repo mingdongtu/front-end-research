@@ -120,6 +120,9 @@ const CollectionCreateForm = Form.create()({
 export default {
   name: 'userForm',
   props: ['visible', 'userInfo', 'title'],
+  beforeCreate() {
+      this.form = this.$form.createForm(this);
+    },
   methods: {
     handleCancel() {
       const form = this.formRef.form

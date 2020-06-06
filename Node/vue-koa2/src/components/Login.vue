@@ -51,6 +51,7 @@
 
 
 <script>
+import { message } from 'ant-design-vue'
 export default {
   name: 'Login',
   data() {
@@ -58,12 +59,31 @@ export default {
       formLayout: 'horizontal'
     }
   },
+   beforeCreate() {
+      this.form = this.$form.createForm(this);
+    },
   methods: {
     handleSubmit(e) {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values)
+          let obj = {
+                name:values.name,
+                password:values.password
+          }
+          this.$http.post('/api/user',obj).then(res=>{
+                if(res.data.success){
+                     sessionStorage.setItem('demo-token',res.data.token);
+                     this.$message.success('登录成功！')
+                }else{
+                    this.$message.error(res.data.info);
+                    sessionStorage.setItem('demo-token',null)
+                }
+          },(err)=>{
+                 this.$message.error('请求错误')
+                  sessionStorage.setItem('demo-token',null)
+          }
+          )
         }
       })
     }

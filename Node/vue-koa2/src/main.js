@@ -22,7 +22,7 @@ import {
     Modal,
     Radio
 } from 'ant-design-vue'
-
+Vue.prototype.$message = message
 Vue.component(Button.name, Button)
 Vue.component(Row.name, Row)
 Vue.component(Col.name, Col)
