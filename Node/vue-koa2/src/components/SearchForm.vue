@@ -17,7 +17,7 @@ const SearchForm = {
     return {}
   },
   beforeCreate() {
-      this.form = this.$form.createForm(this);
+    console.log('当前实例',this)
     },
   methods: {
     handleSubmit(e) {

@@ -62,7 +62,10 @@ export default {
       selectItem: {},
       title: '',
       requestList: false,
-      hackReset: true
+      hackReset: true,
+      searchParams:{},
+      updataData:{}
+      
     }
   },
   methods: {

@@ -14,7 +14,9 @@ const getUserInfo = async function(ctx, next) { //node.js中间件
     //新增一个方法，通过用户名查找
 const getUserAuth = async function(ctx, next) {
     const data = ctx.request.body;
-    const userInfo = user.getUserByName(data.name);
+
+    const userInfo = await user.getUserByName(data.name);
+
     if (userInfo != null) {
         //如果查无此用户，返回null
         /**
@@ -22,7 +24,8 @@ const getUserAuth = async function(ctx, next) {
          加密后变为：$2a$10$x3f0Y2SNAmyAfqhKVAV.7uE7RHs3FDGuSYw.LlZhOFoyK7cjfZ.Q6，替换数据库里的123
          */
         // if (userInfo.password !== data.password) {
-        if (!bcrypt.compareSync(data.password, userInfo.password)) { //验证密码是否正确
+        console.log('请求参数', !bcrypt.compareSync(data.password, userInfo.dataValues.password))
+        if (bcrypt.compareSync(data.password, userInfo.dataValues.password)) { //验证密码是否正确
             ctx.response.body = {
                 success: false,
                 info: '密码错误'

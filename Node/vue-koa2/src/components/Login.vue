@@ -60,21 +60,24 @@ export default {
     }
   },
    beforeCreate() {
-      this.form = this.$form.createForm(this);
     },
   methods: {
     handleSubmit(e) {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
+          console.log('登录参数',values)
           let obj = {
-                name:values.name,
+                name:values.username,
                 password:values.password
           }
           this.$http.post('/api/user',obj).then(res=>{
                 if(res.data.success){
                      sessionStorage.setItem('demo-token',res.data.token);
                      this.$message.success('登录成功！')
+                     this.$router.push({
+                          path:'/'
+                     })
                 }else{
                     this.$message.error(res.data.info);
                     sessionStorage.setItem('demo-token',null)

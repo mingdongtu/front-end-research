@@ -31,7 +31,39 @@ export default {
       selectedRows: [],
       selectedRowKeys: [],
       pagination: {},
-      columns: dataSource.columns,
+      columns:[
+            {
+              title:'id',
+              dataIndex:'id',
+              key:'id'
+            },
+            {
+              title:'姓名',
+              dataIndex:'username',
+              key:'username'
+            },
+            {
+              title:'性别',
+              dataIndex:'sex',
+              key:'sex'
+            },
+            {
+              title:'状态',
+              dataIndex:'state',
+              key:'state'
+            },
+            {
+              title:'兴趣',
+              dataIndex:'interest',
+              key:'interest'
+            },
+            {
+              title:'生日',
+              dataIndex:'birthday',
+              key:'birthday'
+            },
+            
+      ],
       total: null,
       params: {
         page: 1,
@@ -79,7 +111,19 @@ export default {
   },
   methods: {
     // 动态获取数据
-    request() {},
+    request () {
+      let _this = this
+      let url = '/api/getOperator'
+      let params = this.params
+      this.$http.post(url,params)
+        .then(res => {
+          res.data.result.rows.map((item, index) => {
+            item.key = index
+          })    //给每条数据添加唯一的key值
+          _this.total = res.data.result.count
+          _this.dataSource = res.data.result.rows
+        })
+    },
     onChangePage(pageNumber) {
       this.params.page = pageNumber
       this.request()

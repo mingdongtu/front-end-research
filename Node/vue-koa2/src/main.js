@@ -23,6 +23,7 @@ import {
     Radio
 } from 'ant-design-vue'
 Vue.prototype.$message = message
+Vue.prototype.$form = Form;
 Vue.component(Button.name, Button)
 Vue.component(Row.name, Row)
 Vue.component(Col.name, Col)
@@ -43,10 +44,25 @@ Vue.component(FormItem.name, FormItem)
 Vue.component(Option.name, Option)
 Vue.component(RangePicker.name, RangePicker)
 Vue.component(RadioGroup.name, RadioGroup)
-
 Vue.config.productionTip = false
-
-/* eslint-disable no-new */
+router.beforeEach((to, from, next) => {
+        const token = sessionStorage.getItem('demo-token')
+        if (to.meta.requiresAuth) {
+            if (token !== 'null' && token != null) {
+                //判断是否存在 token
+                // 全局设定header的token验证，注意Bearear后面有空格
+                /* http://www.axios-js.com/zh-cn/docs/#%E5%85%A8%E5%B1%80%E7%9A%84-axios-%E9%BB%98%E8%AE%A4%E5%80%BC */
+                Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token
+                next()
+            } else {
+                message.warning('请先登录')
+                next('/login')
+            }
+        } else {
+            next()
+        }
+    })
+    /* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
