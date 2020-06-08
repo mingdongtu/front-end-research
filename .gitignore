@@ -20,7 +20,7 @@ node_modules
 
 # production
 dist
-build
+
 
 # log
 log
