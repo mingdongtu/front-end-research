@@ -1,5 +1,5 @@
 <script>
-import { Form, Select, Radio } from 'ant-design-vue'
+import { Form, Select, Radio, message } from 'ant-design-vue'
 import moment from 'moment'
 const FormItem = Form.Item
 const Option = Select.Option
@@ -125,13 +125,38 @@ export default {
   methods: {
     handleCancel() {
       const form = this.formRef.form
+      
       this.$emit('hideForm', 'noUpdate')
       form.resetFields()
     },
     handleCreate() {
       const form = this.formRef.form
-      form.resetFields()
-      this.$emit('hideForm', 'update')
+      let _this = this;
+      form.validateFields(async (err,values)=>{
+           if(err) return;
+           let params = {
+                username:values.username,
+                sex:values.sex,
+                state:values.state,
+                birthday:values.birthday,
+                interest:values.interest,
+                id:_this.title ==='创建员工'?null:_this.userInfo.id
+           }
+           let url = _this.title==="创建员工"?'/api/createOperator':'/api/updateOperator';
+           this.$http.post(url,params).then(res=>{
+                if(res.data.id){
+                    message.success('创建成功');
+                    form.resetFields();
+                    _this.$emit('hideForm','update')
+                }
+                if(res.data.result.length){
+                    message.success('更新成功');
+                    _this.$emit('hideForm','update',params)
+                }
+           })
+      })
+      // form.resetFields()
+      // this.$emit('hideForm', 'update')
     },
     saveFormRef(formRef) {
       this.formRef = formRef
