@@ -24,7 +24,12 @@ const SearchForm = {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values)
+          if(!values.birthday){ //如果用户没有选择时间段，就给一个大范围的时间搜索
+              values.birthday = [];
+              values.birthday[0] = moment(new Date(1900,0,1)).format('YYYY-MM-DD')
+              values.birthday[1] = moment(new Date(2100,0,1)).format('YYYY-MM-DD')
+          }
+          this.$emit('searchOperator',values)
         }
       })
     },

@@ -20,5 +20,6 @@ export default function(app) {
     router.post('/api/createOperator', jwt({ secret: 'vue-koa-demo' }), ManagementController.createOperator)
     router.post('/api/updateOperator', jwt({ secret: 'vue-koa-demo' }), ManagementController.updateOperator)
     router.post('/api/deleteOperator', jwt({ secret: "vue-koa-demo" }), ManagementController.deleteOperator)
+    router.post('/api/ssearchOperator',jwt({secret:'vue-koa-demo'}),ManagementController.searchOperator)
     app.use(router.routes()).use(router.allowedMethods())
 }
