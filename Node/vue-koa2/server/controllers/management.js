@@ -1,3 +1,4 @@
+//前后端数据交互的缓冲层
 import management from './../models/management.js';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
@@ -67,6 +68,10 @@ const deleteOperator = async function(ctx, next) {
             result: '删除失败'
         }
     }
+}
+const searchOperator = async function(ctx,next){
+       const data = ctx.request.body;
+    //    对日期进行处理
 }
 export default {
     getOperator,

@@ -1,5 +1,5 @@
 <script>
-import { Form, Select, Radio, message } from 'ant-design-vue'
+import { Form, Select, Radio, message,Input } from 'ant-design-vue'
 import moment from 'moment'
 const FormItem = Form.Item
 const Option = Select.Option
@@ -11,7 +11,8 @@ const CollectionCreateForm = Form.create()({
     'a-select': Select,
     'a-option': Option,
     'a-radio': Radio,
-    'a-radio-group': RadioGroup
+    'a-radio-group': RadioGroup,
+    'a-input-text-area':Input.TextArea
   },
 
   props: ['visible', 'selectData', 'title', 'userInfo'],
@@ -109,7 +110,7 @@ const CollectionCreateForm = Form.create()({
               ? userInfo.interest
               : getFieldDecorator('interest', {
                   initialValue: userInfo.interest
-                })(<a-text-area autosize={rowObject} />)}
+                })(<a-input-text-area autosize={rowObject} />)}
           </a-form-item>
         </a-form>
       </a-modal>
@@ -140,7 +141,7 @@ export default {
                 state:values.state,
                 birthday:values.birthday,
                 interest:values.interest,
-                id:_this.title ==='创建员工'?null:_this.userInfo.id
+                id:_this.title ==='创建员工'?100:_this.userInfo.id
            }
            let url = _this.title==="创建员工"?'/api/createOperator':'/api/updateOperator';
            this.$http.post(url,params).then(res=>{

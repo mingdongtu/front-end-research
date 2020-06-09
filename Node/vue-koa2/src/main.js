@@ -20,14 +20,16 @@ import {
     message,
     Pagination,
     Modal,
-    Radio
+    Radio,
 } from 'ant-design-vue'
 Vue.prototype.$message = message
 Vue.prototype.$form = Form;
+Vue.prototype.Modal = Modal
 Vue.component(Button.name, Button)
 Vue.component(Row.name, Row)
 Vue.component(Col.name, Col)
-Vue.component(Input.name, Input)
+// Vue.component('TextArea', Input.TextArea )
+Vue.component(Input.name,Input)
 Vue.component(Card.name, Card)
 Vue.component(Select.name, Select)
 Vue.component(DatePicker.name, DatePicker)
@@ -44,6 +46,7 @@ Vue.component(FormItem.name, FormItem)
 Vue.component(Option.name, Option)
 Vue.component(RangePicker.name, RangePicker)
 Vue.component(RadioGroup.name, RadioGroup)
+
 Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
         const token = sessionStorage.getItem('demo-token')
