@@ -29,7 +29,13 @@ const SearchForm = {
               values.birthday[0] = moment(new Date(1900,0,1)).format('YYYY-MM-DD')
               values.birthday[1] = moment(new Date(2100,0,1)).format('YYYY-MM-DD')
           }
-          this.$emit('searchOperator',values)
+          // console.log('出现错误了3123132',err,values)
+          // this.$emit('searchOperator',values)
+          this.$http.post('/api/searchOperator',values).then(res=>{
+               console.log('获取数据成功')
+          })
+        }else{
+           console.log('出现错误了',err)
         }
       })
     },

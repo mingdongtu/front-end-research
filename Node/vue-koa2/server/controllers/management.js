@@ -69,22 +69,25 @@ const deleteOperator = async function(ctx, next) {
         }
     }
 }
-const searchOperator = async function(ctx,next){
-       const data = ctx.request.body;
+const searchOperator = async function(ctx, next) {
+    const data = ctx.request.body;
+
     //    对日期进行处理
     data.birthday[0] = moment(data.birthday[0]).format('YYYY-MM-DD');
     data.birthday[1] = moment(data.birthday[1]).format('YYYY-MM-DD');
+
     const result = await management.searchOperator(data)
-    if(result !== null){
-            ctx.response.body = {
-                  success:true,
-                  result
-            }
-    }else{
-           ctx.response.body = {
-                  success:false,
-                  result:'获取数据出错'
-           }
+    console.log('服务端', result)
+    if (result !== null) {
+        ctx.response.body = {
+            success: true,
+            result
+        }
+    } else {
+        ctx.response.body = {
+            success: false,
+            result: '获取数据出错'
+        }
     }
     return result
 }
