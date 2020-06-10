@@ -4,7 +4,8 @@ import db from './../config/db.js';
 const managementModel = './../schema/management.js';
 const DemoDb = db.Demo; //与数据库建立连接
 const Management = DemoDb.import(managementModel) //利用sequelize 的import 方法引入表格结构
-
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op
 const getOperator = async function(params) {
     const result = await Management.findAndCountAll({ //findAndCountAll数据库中查找多个元素，返回数据与记录总数
         offset: (params.page - 1) * params.pageSize, //offset表示页码
@@ -59,12 +60,12 @@ const searchOperator = async function(params) {
 
     const result = await Management.findAll({
         where: {
-            state: { in: params.state
+            state: { [Op.in]: params.state
             },
-            sex: { in: params.sex
+            sex: { [Op.in]: params.sex
             },
             birthday: {
-                $between: [params.birthday[0], params.birthday[1]]
+                [Op.between]: [params.birthday[0], params.birthday[1]]
             }
         }
     })

@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <search-form></search-form>
+    <search-form @searchOperator='searchOperator'></search-form>
     <a-card style="margin-top:-1px;margin-bottom: -1px;">
       <a-button
         type="primary"
@@ -70,6 +70,9 @@ export default {
   },
   methods: {
     // 操作员工
+    searchOperator(params){
+           this.searchParams = params
+    },
     handleOperator(type) {
       let self = this.$http
       let _this = this
