@@ -3,7 +3,9 @@
 import db from './../config/db.js';
 const managementModel = './../schema/management.js';
 const DemoDb = db.Demo; //与数据库建立连接
-const Management = DemoDb.import(managementModel) //利用sequelize 的import 方法引入表格结构
+const Management = DemoDb.import(managementModel)
+ //利用sequelize 的import 方法引入表格结构:这个是koa 连接数据库的通道，调用该对象上的方法进行增删改查
+ //这个类似于react项目中的service 目录，专门调用后端接口，这里调用的是数据库的接口
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op
 const getOperator = async function(params) {

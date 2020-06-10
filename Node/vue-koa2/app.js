@@ -1,3 +1,5 @@
+//这个是后端脚本
+
 //服务端
 import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
@@ -8,7 +10,7 @@ const app = new Koa()
 
 app.use(bodyParser())
     //把路由挂载到app上
-router(app)
+router(app)  //调用路由相关中间件
 app.use(serve(path.resolve('dist')))  //将webpack 打包好的项目目录作为Koa静态文件服务的目录
 /*
  注意app.use(serve(path.resolve('dist')))这句话要放在router(app)的后面，koa 的运行机制是谁先被 use，
