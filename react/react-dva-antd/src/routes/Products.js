@@ -61,10 +61,15 @@ export default class Products extends Component {
         }
     render(){
      const {  products } = this.props
+     const producListProps= {
+      handleDelete:this.handleDelete,
+      handleAdd:this.handleAdd,
+      products
+     }
      return (
      <div >
      <h2>List of Products{this.state.a}</h2> 
-     <ProductList onDelete={this.handleDelete} onAdd = {this.handleAdd} products={products} />
+     <ProductList {...producListProps} />
      </div>
      )
      
