@@ -5,8 +5,8 @@ module.exports = {
   indexPath: 'app.html',
   configureWebpack: {},
   css: {
-    requireModuleExtension: false, //去掉文件名中的.module
-    
+    requireModuleExtension: false, // 去掉文件名中的.module
+
     loaderOptions: {
       less: {
         rules: [{

@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <p @click="onChange">点击</p>
+    <p @click="onChange">hash</p>
     <span>{{a}}</span>
     <Home/>
   </div>
@@ -22,9 +22,6 @@ export default class HelloWorld extends Vue {
   a = '来试一下'
   onChange (): void {
     this.a = '1000'
-    this.$router.push({
-      name: 'hash'
-    })
   }
 }
 </script>
