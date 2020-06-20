@@ -45,33 +45,34 @@ export default class Products extends Component {
         dispatch({
             type: 'products/delete',
             payload: id,
-        });
-    }
-    @Bind()
-    handleAdd() {
-        const { dispatch, products } = this.props
-        const key = products.length + 1
-        const data = [
-            { name: '增加一行', id: key, key: Math.random() }
-        ]
-        dispatch({
-            type: 'products/add',
-            payload: { products: data }
-        })
-    }
-    render() {
-        const { products } = this.props
-        return ( <
-            div >
-            <
-            h2 > List of Products { this.state.a } < /h2>  <
-            ProductList onDelete = { this.handleDelete }
-            onAdd = { this.handleAdd }
-            products = { products }
-            /> < /
-            div >
-        )
-
+          });
+        }
+        @Bind()
+         handleAdd(){
+          const { dispatch, products } = this.props
+             const key = products.length +1 
+             const data = [
+                {name:'增加一行',id:key,key:Math.random()}
+           ]
+              dispatch({
+                    type:'products/add',
+                    payload:{products:data}
+              })
+        }
+    render(){
+     const {  products } = this.props
+     const producListProps= {
+      handleDelete:this.handleDelete,
+      handleAdd:this.handleAdd,
+      products
+     }
+     return (
+     <div >
+     <h2>List of Products{this.state.a}</h2> 
+     <ProductList {...producListProps} />
+     </div>
+     )
+     
     }
 }
 // const Products = (props) => {

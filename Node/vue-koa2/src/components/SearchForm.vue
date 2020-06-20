@@ -30,10 +30,10 @@ const SearchForm = {
               values.birthday[1] = moment(new Date(2100,0,1)).format('YYYY-MM-DD')
           }
           // console.log('出现错误了3123132',err,values)
-          // this.$emit('searchOperator',values)
-          this.$http.post('/api/searchOperator',values).then(res=>{
-               console.log('获取数据成功')
-          })
+          this.$emit('searchOperator',values)
+          // this.$http.post('/api/searchOperator',values).then(res=>{
+          //      console.log('获取数据成功')
+          // })
         }else{
            console.log('出现错误了',err)
         }

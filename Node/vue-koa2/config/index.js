@@ -15,7 +15,6 @@ const path = require('path')
 
 module.exports = {
     dev: {
-
         // Paths
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
@@ -25,7 +24,6 @@ module.exports = {
                 changeOrigin: true
             }
         },
-
         // Various Dev Server settings
         host: 'localhost', // can be overwritten by process.env.HOST
         port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
@@ -63,7 +61,7 @@ module.exports = {
          * Source Maps
          */
 
-        productionSourceMap: true,
+        productionSourceMap: false,   //false:取消输出map文件
         // https://webpack.js.org/configuration/devtool/#production
         devtool: '#source-map',
 
@@ -71,7 +69,7 @@ module.exports = {
         // Surge or Netlify already gzip all static assets for you.
         // Before setting to `true`, make sure to:
         // npm install --save-dev compression-webpack-plugin
-        productionGzip: false,
+        productionGzip: false,  //开启生产gzip压缩
         productionGzipExtensions: ['js', 'css'],
 
         // Run the build command with an extra argument to

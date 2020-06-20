@@ -7,6 +7,7 @@ import jwt from 'koa-jwt'
 const router = new KoaRouter();
 
 export default function(app) {
+  
     //不同的请求路径对应不同的中间件
     router.post('/user/:id', UserController.getUserInfo)
     router.post('/api/user', UserController.getUserAuth)
@@ -21,5 +22,6 @@ export default function(app) {
     router.post('/api/updateOperator', jwt({ secret: 'vue-koa-demo' }), ManagementController.updateOperator)
     router.post('/api/deleteOperator', jwt({ secret: "vue-koa-demo" }), ManagementController.deleteOperator)
     router.post('/api/searchOperator', jwt({ secret: 'vue-koa-demo' }), ManagementController.searchOperator)
+      //调用中间件
     app.use(router.routes()).use(router.allowedMethods())
 }

@@ -1,4 +1,8 @@
 //前后端数据交互的缓冲层
+/**
+ 这个文件类似react 项目里的model 文件目录，专门传递参数，拿到返回结果；
+ 这里传递数据给model里面去拿到数据，最终生成不同的中间件，然后将这些中间件暴露出去
+ */
 import management from './../models/management.js';
 import moment from 'moment';
 import 'moment/locale/zh-cn';

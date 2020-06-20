@@ -1,11 +1,11 @@
 module.exports = {
-  publicPath: './',
-  outputDir: 'build',
+  publicPath: '/my-app/',
+  outputDir: 'dist',
   assetsDir: 'asset',
   indexPath: 'app.html',
   configureWebpack: {},
   css: {
-    requireModuleExtension: true,
+    requireModuleExtension: false, // 去掉文件名中的.module
 
     loaderOptions: {
       less: {
