@@ -7,7 +7,7 @@
    export default {
          data(){
               return {
-                    msg:'hello'
+                       msg:'hello'
               }
          },
          beforeCreate(){  //整个页面创建之前的调用 
